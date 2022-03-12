@@ -44,7 +44,55 @@ class ViewController: UIViewController {
     }
      
     @IBAction func btnConvertClicked(_ sender: UIButton) {
+        if secilenIndex == 0 {
+            // RGB'den HEX'e çevirme işlemi yapılacaktır.
+            convertRGBtoHEX()
+        }
+        else {
+            //HEX'den RGB'e çevirme işlemi yapılacaktır.
+convertHEXtoRGB()
+        }
+
+    
+    func convertRGBtoHEX(){
+        if let redValue = UInt8(txtRed.text!){
+            if let greenValue = UInt8(txtGreen.text!){
+                if let blueValue = UInt8(txtBlue.text!){
+                
+                let redHex = String(format: "%2X", redValue)
+                let greenHex = String(format: "%2X", greenValue)
+                let blueHex = String(format: "%2X", blueValue )
+                    
+                    lblResult.text = "HEX color : #\(redHex) \(greenHex) \(blueHex)"
+                    lblSelectedColor.backgroundColor = UIColor(displayP3Red: CGFloat(redValue)/255, green: CGFloat(greenValue)/255, blue: CGFloat(blueValue)/255, alpha: 1)
+
+        }
+        
+    }
+            
+        }
+    
+    
+    }
+        
+        func convertHEXtoRGB(){
+            if let redValue = UInt8(txtRed.text!, radix: 16){
+                if let greenValue = UInt8(txtGreen.text!, radix: 16){
+                    if let blueValue = UInt8(txtBlue.text!, radix: 16){
+                        lblResult.text = "RED : \(redValue) \n GREEN : \(greenValue) \n BLUE : \(blueValue)"
+                        lblSelectedColor.backgroundColor = UIColor(displayP3Red: CGFloat(redValue)/255, green: CGFloat(greenValue)/255, blue: CGFloat(blueValue)/255, alpha: 1)
+            
+        }
+                    
+        }
+                
+    }
+            
+    }
+        
     }
     
-}
+    }
+
+
 
